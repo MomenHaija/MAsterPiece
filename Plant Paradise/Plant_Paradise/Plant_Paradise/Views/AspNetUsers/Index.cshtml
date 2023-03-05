@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Plant_Paradise.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/UserLayout12.cshtml";
+}
+
+<div class="contact-from-section mt-150 mb-150">
+
+    <section class="ftco-section contact-section">
+        <h3 style="text-align: center;margin-bottom: 1%;">My Profile</h3>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-5 col-xl-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">My Profile</h5>
+                        </div>
+
+                        <div class="list-group list-group-flush" role="tablist">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account"
+                               role="tab">
+                                My info
+                            </a>
+
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#Notifications" role="tab">
+                                My Orders
+                            </a>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7 col-xl-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="account" role="tabpanel">
+
+
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-actions float-right">
+
+                                    </div>
+                                    <div class="card-title mb-0">My info</div>
+                                </div>
+                                <div class="card-body">
+                                    @using(Html.BeginForm("Edit", "AspNetUsers")){
+
+                                        foreach (var item in Model)
+                                        {
+                                            <div class="form-group">
+                                                <label for="inputFirstName">Name</label>
+                                                <input type="text" class="form-control" id="inputFirstName"
+                                                       value="@item.Full_Name">
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail4">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail4" value="@item.Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputAddress">Address</label>
+                                                <input type="text" class="form-control" id="inputAddress"
+                                                       value="@item.User_Address">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputAddress">Phone Number</label>
+                                                <input type="tel" class="form-control" id="inputAddress"
+                                                       value="@item.Phone_Number">
+                                            </div>
+                                        }
+                                        <input type="submit" value="Save Change"  class="boxed-btn">
+                                        
+                                    }
+
+                                    </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="password" role="tabpanel">
+                            <div class="card">
+
+                                <div class="card mb-12">
+                                    <h5 style="margin: 0.5rem 0.3rem;;">
+                                        Total Revenues:  <span style="color: #F28123;">141JD</span>
+                                    </h5>
+                                    <div class="card-header">Revenues</div>
+                                    <!-- Billing history table-->
+                                    <div class="table-responsive table-billing-history">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-gray-200" scope="col">Product Name</th>
+                                                    <th class="border-gray-200" scope="col">Product Image</th>
+                                                    <th class="border-gray-200" scope="col">Item that sold </th>
+                                                    <th class="border-gray-200" scope="col">Product Revenues</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>lemon Tree</td>
+                                                    <td><img src="assets/img/MeyerLemonTree.jfif" style="width: 60px;height: 60px;"></td>
+                                                    <td>29</td>
+                                                    <td>105JD</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>lemon Tree</td>
+                                                    <td><img src="assets/img/MeyerLemonTree.jfif" style="width: 60px;height: 60px;"></td>
+                                                    <td>29</td>
+                                                    <td>105JD</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>lemon Tree</td>
+                                                    <td><img src="assets/img/MeyerLemonTree.jfif" style="width: 60px;height: 60px;"></td>
+                                                    <td>29</td>
+                                                    <td>105JD</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>lemon Tree</td>
+                                                    <td><img src="assets/img/MeyerLemonTree.jfif" style="width: 60px;height: 60px;"></td>
+                                                    <td>29</td>
+                                                    <td>105JD</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="Notifications" role="tabpanel">
+                            <div class="card">
+                                <div class="card mb-12 ">
+
+                                    <div class="card-header">My Orders</div>
+                                    <!-- Billing history table-->
+
+                                    <div class="table-responsive table-billing-history">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-gray-200" scope="col">Order Id</th>
+                                                    <th class="border-gray-200" scope="col">Order Date</th>
+                                                    <th class="border-gray-200" scope="col">Total price</th>
+                                                    <th class="border-gray-200" scope="col">Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>52</td>
+                                                    <td>28/12/2022</td>
+                                                    <td>29JD</td>
+
+                                                    <td>
+                                                        <a class="btn btn-success" style="color: white;">View Products</a>
+
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>52</td>
+                                                    <td>28/12/2022</td>
+                                                    <td>29JD</td>
+
+                                                    <td>
+                                                        <a class="btn btn-success" style="color: white;">View Products</a>
+
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>52</td>
+                                                    <td>28/12/2022</td>
+                                                    <td>29JD</td>
+
+                                                    <td>
+                                                        <a class="btn btn-success" style="color: white;">View Products</a>
+
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>52</td>
+                                                    <td>28/12/2022</td>
+                                                    <td>29JD</td>
+
+                                                    <td>
+                                                        <a class="btn btn-success" style="color: white;">View Products</a>
+
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

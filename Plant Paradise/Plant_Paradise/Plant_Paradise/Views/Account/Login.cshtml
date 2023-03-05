@@ -1,0 +1,83 @@
+﻿@using Plant_Paradise.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/UserLayout12.cshtml";
+}
+
+<section id="socialLoginForm">
+    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+
+
+
+<section class="vh-100 ftco-section">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="~/Content/assets/img/OIP (1).jpg" class="img-fluid" alt="Phone image" style="height: 500px;" />
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                
+                {
+                  
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="d-flex justify-content-around align-items-center mb-4">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { @clas = "form-check-input" })
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label" })
+                        @*@Html.ActionLink("Forgot your password?", "ForgotPassword", null, new {@class= "form-check-label" })*@
+
+                    </div>
+
+
+
+                </div>
+                <div class="d-flex justify-content-around align-items-center mb-4">
+
+                    <div class="form-check">
+                        not have an account? @Html.ActionLink("Register as a new user", "Register")
+
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <input type="submit" value="Submit" class="btn btn-default btn-lg btn-block" />
+                <div class="divider d-flex align-items-center my-4">
+                    <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                </div>
+
+                <button class="btn btn-lg btn-block " style="background-color: #dd4b39;color: white;"
+                        type="submit">
+                    <i class="fab fa-google me-2"></i> Sign in with google
+                </button>
+                <button class="btn btn-lg btn-block bt mb-2" style="background-color: #3b5998; color: white;"
+                        type="submit">
+                    <i class="fab fa-facebook-f me-2"></i>Sign in with facebook
+                </button>
+
+            }
+            </div>
+        </div>
+    </div>
+</section>
