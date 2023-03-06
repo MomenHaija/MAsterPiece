@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PlantsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PlantsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -121,6 +121,7 @@
           <Property Name="Order_id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Order_date" Type="date" />
           <Property Name="userId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Total_price" Type="float" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -450,8 +451,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PlantsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -585,6 +585,7 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK__Orders__userId__3C34F16F" FromRole="Orders" ToRole="AspNetUsers" />
           <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Order__3F115E1A" FromRole="Orders" ToRole="Order_Details" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Order__42E1EEFE" FromRole="Orders" ToRole="Transactions" />
+          <Property Name="Total_price" Type="Double" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -1010,6 +1011,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="PlantsModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Total_price" ColumnName="Total_price" />
                 <ScalarProperty Name="Order_id" ColumnName="Order_id" />
                 <ScalarProperty Name="Order_date" ColumnName="Order_date" />
                 <ScalarProperty Name="userId" ColumnName="userId" />

@@ -4,81 +4,91 @@
     ViewBag.Title = "SingleProduct";
     Layout = "~/Views/Shared/UserLayout12.cshtml";
 }
+@using (Html.BeginForm("Add_ToCart", "Products"))
+{
+    <div class="single-product mt-150 mb-150">
+        <div class="container">
+            <div class="row">
 
-<div class="single-product mt-150 mb-150">
-    <div class="container">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-            <div class="col-md-5">
-                <div class="single-product-img">
-                    <img src="~/Images/@item.Product_Image" alt="">
+
+                @foreach (var item in Model)
+                {
+                <div class="col-md-5">
+                    <div class="single-product-img">
+                        <img src="~/Images/@item.Product_Image" alt="">
+                    </div>
+                </div>
+                
+                <div class="col-md-7">
+                    <div class="single-product-content">
+                        <h3>Boncellensis Secullant</h3>
+                        <p class="single-product-pricing"><span></span>@item.Product_Price JD</p>
+                        <p>Boncellensis Secullant is a stunning and unique succulent plant with cylindrical stems that grow upright, resembling little columns. It features small, green leaves that grow in a spiral pattern around the stems, and produces delicate pink flowers in the spring. This plant is low-maintenance and perfect for indoor or outdoor settings, making it a great choice for anyone looking to add a touch of natural beauty to their home or garden.</p>
+                        <h4>Size:@item.Product_Size</h4>
+                        <div class="single-product-form">
+                            <p><strong>Categories:</strong>@item.Sub_Categories.SubCategory_Name</p>
+
+                            @using (Html.BeginForm("Add_ToCart", "Products", new {id=item.Product_id}))
+                            {
+                                <input type="number" name="quantity" placeholder="0">
+                                <input type="submit" value="Add to Cart" class="cart-btn" >
+
+
+                            }
+                        </div>
+                      
+                    </div>
+
+                </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+}
+   <!-- end single product -->
+    <!-- more products -->
+    <div class="more-products mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="section-title">
+                        <h3><span class="orange-text">Related</span> Products</h3>
+                        <p>Related products are items that complement or are similar to the main product being sold.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-7">
-                <div class="single-product-content">
-                    <h3>Boncellensis Secullant</h3>
-                    <p class="single-product-pricing"><span></span>@item.Product_Price JD</p>
-                    <p>Boncellensis Secullant is a stunning and unique succulent plant with cylindrical stems that grow upright, resembling little columns. It features small, green leaves that grow in a spiral pattern around the stems, and produces delicate pink flowers in the spring. This plant is low-maintenance and perfect for indoor or outdoor settings, making it a great choice for anyone looking to add a touch of natural beauty to their home or garden.</p>
-                    <div class="single-product-form">
-                        <form action="index.html">
-                            <input type="number" placeholder="0">
-                        </form>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="assets/img/AppleTrees.jpg " alt="" style="width: 261px;height: 261px;"></a>
+                        </div>
+                        <h3>Apple Tree</h3>
+                        <p class="product-price">15JD </p>
                         <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                        <p><strong>Categories:</strong>@item.Sub_Categories.SubCategory_Name</p>
                     </div>
-                    <h4>Size:@item.Product_Size</h4>
-                    
                 </div>
-
-            </div>
-            }
-        </div>
-    </div>
-</div>
-<!-- end single product -->
-<!-- more products -->
-<div class="more-products mb-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Related</span> Products</h3>
-                    <p>Related products are items that complement or are similar to the main product being sold.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/AppleTrees.jpg " alt="" style="width: 261px;height: 261px;"></a>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="assets/img/Boncellensis Secullant.jpg" alt=""></a>
+                        </div>
+                        <h3>Boncellensis Secullant</h3>
+                        <p class="product-price">20JD</p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
-                    <h3>Apple Tree</h3>
-                    <p class="product-price">15JD </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/Boncellensis Secullant.jpg" alt=""></a>
+                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="assets/img/WildRoses.jpg" alt="" style="width: 261px;height: 261px;"></a>
+                        </div>
+                        <h3>Wild Roses</h3>
+                        <p class="product-price">5JD</p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
-                    <h3>Boncellensis Secullant</h3>
-                    <p class="product-price">20JD</p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/WildRoses.jpg" alt="" style="width: 261px;height: 261px;"></a>
-                    </div>
-                    <h3>Wild Roses</h3>
-                    <p class="product-price">5JD</p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
         </div>
     </div>
-</div>

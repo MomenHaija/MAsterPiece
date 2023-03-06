@@ -112,6 +112,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="PlantsModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Total_price" ColumnName="Total_price" />
           <ScalarProperty Name="Order_id" ColumnName="Order_id" />
           <ScalarProperty Name="Order_date" ColumnName="Order_date" />
           <ScalarProperty Name="userId" ColumnName="userId" />

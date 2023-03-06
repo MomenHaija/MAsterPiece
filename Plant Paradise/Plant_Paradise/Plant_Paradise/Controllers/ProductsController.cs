@@ -35,11 +35,13 @@ namespace Plant_Paradise.Controllers
             return View(products.ToList());
         }
 
-        public ActionResult Add_ToCart(int id)
+        public ActionResult Add_ToCart(int id,string quantity)
         {
             cart Cart = new cart();
             Cart.Product_id = id;
-            Cart.Quantity = 1;
+          
+                Cart.Quantity = 1;
+            
             Cart.userId = User.Identity.GetUserId();
             db.carts.Add(Cart);
             db.SaveChanges();

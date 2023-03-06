@@ -48,16 +48,20 @@ namespace Plant_Paradise.Controllers
             };
             db.Orders.Add(order);
             db.SaveChanges();
-
-
+            float TotalPrice = 0;
             foreach (var cartItem in cartItems)
                 {
+
+                var itemprice = cartItem.Product.Product_Price;
+                var itemQuentity = cartItem.Quantity;
+                TotalPrice +=float.Parse(Convert.ToString(itemprice * itemQuentity));
                 Order_Details orderDetail = new Order_Details
                 {
+
                         Order_id = order.Order_id,
                         Product_id = cartItem.Product_id,
                         Quantity = cartItem.Quantity,
-                    };
+                };
                     // Associate the OrderDetail objects with the Order object
                     db.Order_Details.Add(orderDetail);
                     // Remove the cart item from the Cart table
@@ -65,7 +69,7 @@ namespace Plant_Paradise.Controllers
 
                 }
 
-          
+                order.Total_price = TotalPrice;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Transactions");
             

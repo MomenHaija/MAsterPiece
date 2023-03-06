@@ -24,6 +24,7 @@ namespace Plant_Paradise.Models
         public string Order_id { get; set; }
         public Nullable<System.DateTime> Order_date { get; set; }
         public string userId { get; set; }
+        public Nullable<double> Total_price { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

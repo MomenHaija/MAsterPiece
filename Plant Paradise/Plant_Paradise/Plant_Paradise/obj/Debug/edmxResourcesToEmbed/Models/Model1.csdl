@@ -130,6 +130,7 @@
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK__Orders__userId__3C34F16F" FromRole="Orders" ToRole="AspNetUsers" />
     <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Order__3F115E1A" FromRole="Orders" ToRole="Order_Details" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Order__42E1EEFE" FromRole="Orders" ToRole="Transactions" />
+    <Property Name="Total_price" Type="Double" />
   </EntityType>
   <EntityType Name="Product">
     <Key>

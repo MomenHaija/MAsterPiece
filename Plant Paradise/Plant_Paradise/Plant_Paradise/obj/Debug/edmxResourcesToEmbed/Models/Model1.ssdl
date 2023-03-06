@@ -116,6 +116,7 @@
     <Property Name="Order_id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Order_date" Type="date" />
     <Property Name="userId" Type="nvarchar" MaxLength="128" />
+    <Property Name="Total_price" Type="float" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
