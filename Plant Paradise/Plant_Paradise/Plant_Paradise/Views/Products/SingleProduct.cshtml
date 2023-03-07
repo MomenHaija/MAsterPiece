@@ -28,13 +28,17 @@
                         <div class="single-product-form">
                             <p><strong>Categories:</strong>@item.Sub_Categories.SubCategory_Name</p>
 
-                            @using (Html.BeginForm("Add_ToCart", "Products", new {id=item.Product_id}))
-                            {
-                                <input type="number" name="quantity" placeholder="0">
-                                <input type="submit" value="Add to Cart" class="cart-btn" >
+                            <form method="post" Asp-action="Add_ToCart">
+                                <input type="hidden" name="id" value="@item.Product_id" />
+                                <div>
+                                    <label for="quantity">Quantity:</label>
+                                    <input type="number" id="quantity" name="quantity" value="1" min="1" required />
+                                </div>
+                                <div>
+                                    <input class="cart-btn" type="submit" value="Add to Cart">
+                                </div>
 
-
-                            }
+                            </form>
                         </div>
                       
                     </div>

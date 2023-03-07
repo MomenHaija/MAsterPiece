@@ -171,8 +171,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminProductsController.cs" />
+    <Compile Include="Controllers\CategoriesAdminController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersAdminController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
@@ -583,6 +587,28 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Shared\UserOrder.cshtml" />
     <Content Include="Views\Shared\ProductsinOrders.cshtml" />
+    <Content Include="Views\Feedbacks\Create.cshtml" />
+    <Content Include="Views\Feedbacks\Delete.cshtml" />
+    <Content Include="Views\Feedbacks\Details.cshtml" />
+    <Content Include="Views\Feedbacks\Edit.cshtml" />
+    <Content Include="Views\Feedbacks\Index.cshtml" />
+    <Content Include="Views\Shared\feedbacks.cshtml" />
+    <Content Include="Views\Shared\AdminLAyout.cshtml" />
+    <Content Include="Views\CategoriesAdmin\Create.cshtml" />
+    <Content Include="Views\CategoriesAdmin\Delete.cshtml" />
+    <Content Include="Views\CategoriesAdmin\Details.cshtml" />
+    <Content Include="Views\CategoriesAdmin\Edit.cshtml" />
+    <Content Include="Views\CategoriesAdmin\Index.cshtml" />
+    <Content Include="Views\AdminProducts\Create.cshtml" />
+    <Content Include="Views\AdminProducts\Delete.cshtml" />
+    <Content Include="Views\AdminProducts\Details.cshtml" />
+    <Content Include="Views\AdminProducts\Edit.cshtml" />
+    <Content Include="Views\AdminProducts\Index.cshtml" />
+    <Content Include="Views\OrdersAdmin\Create.cshtml" />
+    <Content Include="Views\OrdersAdmin\Delete.cshtml" />
+    <Content Include="Views\OrdersAdmin\Details.cshtml" />
+    <Content Include="Views\OrdersAdmin\Edit.cshtml" />
+    <Content Include="Views\OrdersAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

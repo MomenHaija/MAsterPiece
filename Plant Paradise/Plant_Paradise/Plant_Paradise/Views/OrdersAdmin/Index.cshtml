@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Plant_Paradise.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLAyout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Orders</h1>
+    <small>Home / Orders</small>
+</div>
+
+<div class="page-content">
+
+    <div class="records table-responsive">
+
+        <div class="record-header">
+            <div>
+                <input type="radio" name="order">
+                <label>Day Order</label>
+                <input type="radio" name="order">
+                <label>All Orders</label>
+            </div>
+            <div class="add">
+
+                <!-- <span>Entries</span>
+                <select name="" id="">
+                    <option value="">ID</option>
+                </select> -->
+            </div>
+
+            <div class="">
+                <input type="search" placeholder="Search" style="margin:0;height: 33px !important;">
+                <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
+            </div>
+        </div>
+
+        <div>
+            <table width="100%">
+
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Order_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Order_date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Total_price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AspNetUser.Full_Name)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                <thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Order_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Order_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total_price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Full_Name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Order_id }, new {@class="btn btn-success"}) 
+                                @Html.ActionLink("Details", "Details", new { id = item.Order_id }, new {@class="btn btn-info"}) 
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Order_id }, new {@class="btn btn-danger"})
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>

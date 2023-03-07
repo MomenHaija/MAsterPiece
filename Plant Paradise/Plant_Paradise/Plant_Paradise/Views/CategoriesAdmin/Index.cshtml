@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Plant_Paradise.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLAyout.cshtml";
+}
+
+
+<div class="page-header">
+    <h1>Categories</h1>
+    <small>Home / Categories</small>
+</div>
+
+<div class="page-content">
+
+    <div class="records table-responsive">
+
+        <div class="record-header">
+            <div class="add">
+                @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
+            </div>
+
+            <div class="">
+                <input type="search" placeholder="Search" style="margin:0;height: 33px !important;">
+                <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
+            </div>
+        </div>
+
+        <div>
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category_Image)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category_Name)
+                            </td>
+                            <td>
+                                <img src="~/Images/@item.Category_Image" style="width:60px;height:60px;" />
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Category_id }, new {@class="btn btn-success"}) 
+                                @Html.ActionLink("Details", "Details", new { id = item.Category_id }, new {@class="btn btn-info"}) 
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Category_id }, new {@class="btn btn-danger"})
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

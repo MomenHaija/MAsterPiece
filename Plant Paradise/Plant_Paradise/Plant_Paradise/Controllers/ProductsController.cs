@@ -34,14 +34,17 @@ namespace Plant_Paradise.Controllers
             var products = db.Products.Include(p => p.Sub_Categories).Where(p => p.Product_id == id);
             return View(products.ToList());
         }
+       
+       
 
-        public ActionResult Add_ToCart(int id,string quantity)
+
+
+    
+        public ActionResult Add_ToCart(int id,int quantity=1)
         {
             cart Cart = new cart();
             Cart.Product_id = id;
-          
-                Cart.Quantity = 1;
-            
+            Cart.Quantity = quantity;
             Cart.userId = User.Identity.GetUserId();
             db.carts.Add(Cart);
             db.SaveChanges();

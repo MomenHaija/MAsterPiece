@@ -15,7 +15,12 @@ namespace Plant_Paradise.Controllers
             var plants = from b in db.Categories select b;
             return View(plants.ToList());
         }
+         public PartialViewResult feedbacks()
+        {
 
+            var feedbacks = db.Feedbacks;
+            return PartialView("feedbacks", feedbacks.ToList());
+        }
         public ActionResult SubCategory(int id)
         {
 
