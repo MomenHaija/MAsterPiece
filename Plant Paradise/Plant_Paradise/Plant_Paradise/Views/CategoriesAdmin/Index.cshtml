@@ -14,18 +14,19 @@
 <div class="page-content">
 
     <div class="records table-responsive">
+        @using (Html.BeginForm("search", "CategoriesAdmin"))
+        {
+            <div class="record-header">
+                <div class="add">
+                    @Html.ActionLink("ِAdd Category", "Create", null, new { @class = "btn btn-primary" })
+                </div>
 
-        <div class="record-header">
-            <div class="add">
-                @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
+                <div class="">
+                    <input type="search" placeholder="Search" name="search" style="margin:0;height: 33px !important;">
+                    <input type="submit" style="margin:0;" value="search" class="btn btn-info">
+                </div>
             </div>
-
-            <div class="">
-                <input type="search" placeholder="Search" style="margin:0;height: 33px !important;">
-                <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
-            </div>
-        </div>
-
+        }
         <div>
             <table width="100%">
                 <thead>
@@ -35,6 +36,9 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Category_Image)
+                        </th>
+                        <th>
+                            Subcategories
                         </th>
                         <th>
                             Action
@@ -49,12 +53,14 @@
                                 @Html.DisplayFor(modelItem => item.Category_Name)
                             </td>
                             <td>
-                                <img src="~/Images/@item.Category_Image" style="width:60px;height:60px;" />
+                                <img src="~/Images/@item.Category_Image" class="img" />
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Category_id }, new {@class="btn btn-success"}) 
-                                @Html.ActionLink("Details", "Details", new { id = item.Category_id }, new {@class="btn btn-info"}) 
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Category_id }, new {@class="btn btn-danger"})
+                                <a class="btn btn-info" href="/Sub_CategoriesAdmin/Index/@item.Category_id">View Subcategories</a>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Category_id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Category_id }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

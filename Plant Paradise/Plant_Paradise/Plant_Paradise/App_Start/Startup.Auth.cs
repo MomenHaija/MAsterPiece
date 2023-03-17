@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Plant_Paradise.Models;
+using System;
 
 namespace Plant_Paradise
 {
@@ -54,15 +54,15 @@ namespace Plant_Paradise
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "168393088933700",
+               appSecret: "305a57caf1a2174301ca3548094dd8b2");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "340570822095-5vihcd7mctjesn22i30nn4olv6eelhrn.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

@@ -84,7 +84,7 @@
     <div class="container">
         <h3>Discover a world  of <span class="orange-text">natural</span></h3>
         <h3>beauty<span class="orange-text"> at our </span>website</h3>
-        <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+        <a href="/Products/Index2" class="cart-btn btn-lg">Shop Now</a>
     </div>
 </section>
 <!-- end shop banner -->
@@ -141,6 +141,10 @@
         </div>
     </div>
 </div>
+@{
+    Plant_Paradise.Models.PlantsEntities plants = new Plant_Paradise.Models.PlantsEntities();
+    var feeback = plants.Feedbacks.ToList();
+}
 <!-- end team section -->
 <!-- testimonail-section -->
 <div class="testimonail-section mt-150 mb-150">
@@ -148,49 +152,45 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1 text-center">
                 <div class="testimonial-sliders">
+                    @foreach (var item in feeback)
+                    {
+
+                        if (item.IsAccepted == 1)
+                        {
+                            <div class="single-testimonial-slider">
+
+                                <div class="client-avater">
+                                </div>
+                                <div class="client-meta">
+
+                                    <h3>@item.AspNetUser.Full_Name </h3>
+                                    <p class="testimonial-body">
+                                        @item.Feedback_text
+                                    </p>
+                                    <div class="last-icon">
+                                        <i class="fas fa-quote-right"></i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                    }
                     <div class="single-testimonial-slider">
-                        <div class="client-avater">
-                        </div>
-                        <div class="client-meta">
-                            <h3>Saira Hakim </h3>
-                            <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-                            </p>
-                            <div class="last-icon">
-                                <i class="fas fa-quote-right"></i>
+                        <div class="single-testimonial-slider">
+                            <div class="client-avater">
+                            </div>
+                            <div class="client-meta">
+                                <h3>Feebacks From Users</h3>
+
                             </div>
                         </div>
                     </div>
-                    <div class="single-testimonial-slider">
-                        <div class="client-avater">
-                        </div>
-                        <div class="client-meta">
-                            <h3>David Niph </h3>
-                            <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-                            </p>
-                            <div class="last-icon">
-                                <i class="fas fa-quote-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-testimonial-slider">
-                        <div class="client-avater">
-                        </div>
-                        <div class="client-meta">
-                            <h3>Jacob Sikim </h3>
-                            <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
-                            </p>
-                            <div class="last-icon">
-                                <i class="fas fa-quote-right"></i>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
-        <a href="comment.html" class="boxed-btn mt-4">Add Comment</a>
+        <a href="\Feedbacks\Index" class="boxed-btn mt-4">Add Comment</a>
 
     </div>
 </div>

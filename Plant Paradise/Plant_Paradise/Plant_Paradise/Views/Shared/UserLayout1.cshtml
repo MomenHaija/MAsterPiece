@@ -66,34 +66,36 @@
                                 <li><a href="/Home/Index">Home</a></li>
 
                                 <!-- <li><a href="#">Pages</a>
-            <ul class="sub-menu">
-                <li><a href="404.html">404 page</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Check Out</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="shop.html">Shop</a></li>
-            </ul>
-        </li> -->
+                                    <ul class="sub-menu">
+                                        <li><a href="404.html">404 page</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="news.html">News</a></li>
+                                        <li><a href="shop.html">Shop</a></li>
+                                    </ul>
+                                </li> -->
                                 <!-- <li><a href="news.html">News</a>
-            <ul class="sub-menu">
-                <li><a href="news.html">News</a></li>
-                <li><a href="single-news.html">Single News</a></li>
-            </ul>
-        </li> -->
-                                <li><a href="shop4.html">Shop</a></li>
+                                    <ul class="sub-menu">
+                                        <li><a href="news.html">News</a></li>
+                                        <li><a href="single-news.html">Single News</a></li>
+                                    </ul>
+                                </li> -->
+                                <li><a href="/Products/Index2">Shop</a></li>
+                                @if (User.Identity.IsAuthenticated==true)
+                                {
                                 <li><a href="Form.html">Consultation</a></li>
                                 <li><a href="/UserProfile/Index">Profile</a></li>
-
+                                }
                                 <li><a href="/Home/About">About</a></li>
 
                                 <li><a href="/Home/Contact">Contact</a></li>
 
                                 <li>
                                     <div class="header-icons">
-                                       
-                                        <a class="shopping-cart" href="\Products\ViewAdd_ToCart"><i class="fas fa-shopping-cart"></i><span style="margin-left:0.25rem">  @Session["NumberofItem"]</span></a>
+
+                                        <a class="shopping-cart" href="\Products\ViewCart"><i class="fas fa-shopping-cart"></i><span style="margin-left:0.25rem">  @Session["NumberofItem"]</span></a>
                                     </div>
                                 </li>
                                 <li>
@@ -120,32 +122,33 @@
     </div>
 
     @RenderBody()
-
     <div class="logo-carousel-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="logo-carousel-inner">
                         <div class="single-logo-item">
-                            <img src="assets/img/DuPont-Logo.png" alt="">
+                            <img src="~/Content/assets/img/DuPont-Logo.png" alt="">
                         </div>
                         <div class="single-logo-item">
-                            <img src="assets/img/Nutrien_Logo_R_color.png" alt="">
+                            <img src="~/Content/assets/img/Nutrien_Logo_R_color.png" alt="">
                         </div>
                         <div class="single-logo-item">
-                            <img src="assets/img/ADM-6404202d.png" alt="">
+                            <img src="~/Content/assets/img/ADM-6404202d.png" alt="">
                         </div>
                         <div class="single-logo-item">
-                            <img src="assets/img/Syngenta_logo.png" alt="">
+                            <img src="~/Content/assets/img/Syngenta_logo.png" alt="">
                         </div>
                         <div class="single-logo-item">
-                            <img src="assets/img/BASF-Symbol.png" alt="">
+                            <img src="~/Content/assets/img/BASF-Symbol.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <!-- end logo carousel -->
     <!-- footer -->
     <div class="footer-area">
@@ -170,9 +173,9 @@
                     <div class="footer-box pages">
                         <h2 class="widget-title">Pages</h2>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/Home/Index">Home</a></li>
+                            <li><a href="/Home/About">About</a></li>
+                            <li><a href="/Home/Contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>

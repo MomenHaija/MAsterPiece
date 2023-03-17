@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,17 @@ namespace Plant_Paradise.Controllers
         {
             return View(db.Categories.ToList());
         }
+        [HttpPost]
+        public ActionResult search(string search)
+        {
+            var Categories=db.Categories.Where(p=>p.Category_Name.Contains(search)).ToList();  
+            return View("Index", Categories.ToList());
+        }
 
+        public ActionResult Statistics()
+        {
+            return View();
+        }
         // GET: CategoriesAdmin/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,10 +57,18 @@ namespace Plant_Paradise.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Category_id,Category_Name,Category_Image")] Category category)
+        public ActionResult Create([Bind(Include = "Category_id,Category_Name,Category_Image")] Category category, HttpPostedFileBase Category_Image)
         {
+            string fileName = fileName = Path.GetFileName(Category_Image.FileName);
+
             if (ModelState.IsValid)
             {
+                string path = "/Images/" + Path.GetFileName(Category_Image.FileName);
+                string path2 = Path.GetFileName(Category_Image.FileName);
+                category.Category_Image = path2.ToString();
+                Category_Image.SaveAs(Server.MapPath(path));
+
+
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +97,24 @@ namespace Plant_Paradise.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Category_id,Category_Name,Category_Image")] Category category)
+        public ActionResult Edit(int id,[Bind(Include = "Category_id,Category_Name,Category_Image")] Category category, HttpPostedFileBase Category_Image)
         {
             if (ModelState.IsValid)
             {
+                var existingModel = db.Categories.AsNoTracking().FirstOrDefault(x => x.Category_id == id);
+
+                if (category != null)
+                {
+                    string path = "/Images/" + Path.GetFileName(Category_Image.FileName);
+                    string path2 = Path.GetFileName(Category_Image.FileName);
+                    Category_Image.SaveAs(Server.MapPath(path));
+                    category.Category_Image = path2;
+                }
+                else
+                {
+                    category.Category_Image = existingModel.Category_Image;
+                }
+
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

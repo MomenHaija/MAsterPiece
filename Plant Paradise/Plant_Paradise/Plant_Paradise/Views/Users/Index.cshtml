@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Plant_Paradise.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/AdminLAyout.cshtml";
+}
+
+<div class="page-header">
+    <h1>Users</h1>
+    <small>Home / Users</small>
+</div>
+
+<div class="page-content">
+
+    <div class="records table-responsive">
+        @using(Html.BeginForm("search", "Users")){
+        <div class="record-header">
+
+            <div class="add">
+
+                <!-- <span>Entries</span>
+                <select name="" id="">
+                    <option value="">ID</option>
+                </select> -->
+            </div>
+
+            <div class="">
+                <input type="search" name="Search" placeholder="Search" style="margin:0;height: 33px !important;">
+                <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
+            </div>
+        </div>
+        }
+        <div>
+            <table width="100%">
+                <thead>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone_Number)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User_Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Full_Name)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone_Number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User_Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Full_Name)
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Plant_Paradise.Models;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Plant_Paradise.Controllers
 {
@@ -35,7 +36,8 @@ namespace Plant_Paradise.Controllers
 
         public ActionResult MakeOrder()
         {
-           
+            Session["USerid"] =User.Identity.GetUserId();
+
             var userId = User.Identity.GetUserId();
             var cartItems = db.carts.Where(c => c.userId == userId).ToList();
 
@@ -51,7 +53,6 @@ namespace Plant_Paradise.Controllers
             float TotalPrice = 0;
             foreach (var cartItem in cartItems)
                 {
-
                 var itemprice = cartItem.Product.Product_Price;
                 var itemQuentity = cartItem.Quantity;
                 TotalPrice +=float.Parse(Convert.ToString(itemprice * itemQuentity));
@@ -68,7 +69,7 @@ namespace Plant_Paradise.Controllers
                     db.carts.Remove(cartItem);
 
                 }
-
+                Session["NumberofItem"] = 0;
                 order.Total_price = TotalPrice;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Transactions");

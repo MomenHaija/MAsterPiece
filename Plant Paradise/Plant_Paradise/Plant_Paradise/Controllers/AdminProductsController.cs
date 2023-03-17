@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,7 +21,8 @@ namespace Plant_Paradise.Controllers
             var products = db.Products.Include(p => p.Sub_Categories);
             return View(products.ToList());
         }
-
+        //plants
+       
         // GET: AdminProducts/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,11 +41,11 @@ namespace Plant_Paradise.Controllers
         // GET: AdminProducts/Create
         public ActionResult Create()
         {
-            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_image");
+            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_Description");
             return View();
         }
 
-        // POST: AdminProducts/Create
+        // POST: Products1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -57,7 +59,7 @@ namespace Plant_Paradise.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_image", product.Subcategory_id);
+            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_Description", product.Subcategory_id);
             return View(product);
         }
 
@@ -73,7 +75,7 @@ namespace Plant_Paradise.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_image", product.Subcategory_id);
+            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategoryName", product.Subcategory_id);
             return View(product);
         }
 
@@ -90,7 +92,7 @@ namespace Plant_Paradise.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategory_image", product.Subcategory_id);
+            ViewBag.Subcategory_id = new SelectList(db.Sub_Categories, "SubCategory_id", "SubCategoryName", product.Subcategory_id);
             return View(product);
         }
 

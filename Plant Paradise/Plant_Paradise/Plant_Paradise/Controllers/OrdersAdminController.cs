@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Plant_Paradise.Models;
 
 namespace Plant_Paradise.Controllers
@@ -20,7 +21,22 @@ namespace Plant_Paradise.Controllers
             var orders = db.Orders.Include(o => o.AspNetUser);
             return View(orders.ToList());
         }
+        [HttpPost]
+        public ActionResult search(string Search,int order=0)
+        {
+            var orders=db.Orders.Include(o => o.AspNetUser);    
+            if(order==0 || order == 2)
+            {
+                orders= orders.Where(p=>p.AspNetUser.Full_Name.Contains(Search) || p.Order_id.Contains(Search));
+            }
+            else if (order == 1)
+            {
+                orders = orders.Where(p => (p.AspNetUser.Full_Name.Contains(Search) || p.Order_id.Contains(Search))&& p.Order_date==DateTime.Today);
 
+            }
+
+            return View("Index",orders.ToList());
+        }
         // GET: OrdersAdmin/Details/5
         public ActionResult Details(string id)
         {

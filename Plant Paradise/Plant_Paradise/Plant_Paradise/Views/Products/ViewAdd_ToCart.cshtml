@@ -32,26 +32,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="table-body-row">
-                                        <td class="product-remove"><a href="\Products\Remove_FromCard\@item.Cart_Id"><i class="far fa-window-close"></i></a></td>
-                                        <td class="product-image"><img src="~/Images/@item.Product.Product_Image" alt=""></td>
-                                        <td class="product-name">@item.Product.Product_Name</td>
-                                        <td class="product-price">@item.Product.Product_Price JD</td>
-                                        <td class="product-quantity"><input type="number" min="0" placeholder="0" value="@item.Quantity" id="quantity-@item.Cart_Id" name="quantity-@item.Cart_Id"></td>
-                                        <td class="product-total">
-
-
-                                         @{
-
-                                             var itemprice = item.Product.Product_Price;
-                                             var itemQuentity = item.Quantity;
-                                             var itemTotalprice = itemprice * itemQuentity;
-                                         }
-                                            @itemTotalprice JD
-                                        </td>
-                                    </tr>
+                                <tr class="table-body-row">
+                                    <td class="product-remove"><a href="\Products\Remove_FromCard\"><i class="far fa-window-close"></i></a></td>
+                                    <td class="product-image"><img src="~/Images/" alt=""></td>
+                                    <td class="product-name">Name</td>
+                                    <td class="product-price">item.Product.Product_Price JD</td>
+                                    <td class="product-quantity"><input type="number" min="0" placeholder="0" value="item.Quantity" id="quantity-item.Cart_Id" name="quantity-item.Cart_Id"></td>
+                                    <td class="product-total">
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

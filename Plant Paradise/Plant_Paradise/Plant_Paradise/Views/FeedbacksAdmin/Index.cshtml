@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Plant_Paradise.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLAyout.cshtml";
+}
+
+
+<div class="page-header">
+    <h1>feedbacks</h1>
+    <small>Home / feedbacks</small>
+</div>
+
+<div class="page-content">
+    <div class="records table-responsive">
+
+        @using (Html.BeginForm("search", "FeedbacksAdmin"))
+        {
+            <div class="record-header">
+
+                <div class="add">
+
+
+                </div>
+
+                <div class="">
+                    <input type="search" name="Search"  placeholder="Search" style="margin:0;height: 33px !important;">
+                    <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
+                </div>
+            </div>
+        }
+        <div>
+            <table width="100%">
+                <thead>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Feedback_text)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Feedback_Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AspNetUser.Full_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Feedback_text)
+                            </td>
+                            <td>
+                                @item.Feedback_Date.ToString().Split(' ')[0]
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Full_Name)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Accept", "Accept", new { id = item.Feedback_id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Reject", "Reject", new { id = item.Feedback_id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -70,41 +70,43 @@
                                 <li><a href="/Home/Index">Home</a></li>
 
                                 <!-- <li><a href="#">Pages</a>
-            <ul class="sub-menu">
-                <li><a href="404.html">404 page</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Check Out</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="shop.html">Shop</a></li>
-            </ul>
-        </li> -->
+        <ul class="sub-menu">
+            <li><a href="404.html">404 page</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Check Out</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </li> -->
                                 <!-- <li><a href="news.html">News</a>
-            <ul class="sub-menu">
-                <li><a href="news.html">News</a></li>
-                <li><a href="single-news.html">Single News</a></li>
-            </ul>
-        </li> -->
-                                <li><a href="shop4.html">Shop</a></li>
-                                <li><a href="Form.html">Consultation</a></li>
-                                <li><a href="/UserProfile/Index">Profile</a></li>
+        <ul class="sub-menu">
+            <li><a href="news.html">News</a></li>
+            <li><a href="single-news.html">Single News</a></li>
+        </ul>
+    </li> -->
+                                <li><a href="/Products/Index2">Shop</a></li>
+                                @if (User.Identity.IsAuthenticated == true)
+                                {
+                                    <li><a href="Form.html">Consultation</a></li>
+                                    <li><a href="/UserProfile/Index">Profile</a></li>
+                                }
+                                    <li><a href="/Home/About">About</a></li>
 
-                                <li><a href="/Home/About">About</a></li>
+                                    <li><a href="/Home/Contact">Contact</a></li>
 
-                                <li><a href="/Home/Contact">Contact</a></li>
-
-                                <li>
-                                    <div class="header-icons">
-                                        <a class="shopping-cart" href="cart.html">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    @Html.Partial("_LoginPartial")
-                                </li>
-                            </ul>
+                                    <li>
+                                        <div class="header-icons">
+                                            <a class="shopping-cart" href="/Products/ViewCart">
+                                                <i class="fas fa-shopping-cart"></i><span style="margin-left:0.25rem">  @Session["NumberofItem"]</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        @Html.Partial("_LoginPartial")
+                                    </li>
+                                </ul>
 
                         </nav>
                         <div class="mobile-menu"></div>
@@ -164,9 +166,9 @@
                     <div class="footer-box pages">
                         <h2 class="widget-title">Pages</h2>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/Home/Index">Home</a></li>
+                            <li><a href="/Home/About">About</a></li>
+                            <li><a href="/Home/Contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>

@@ -130,12 +130,13 @@
           <Property Name="Product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Product_Name" Type="varchar" MaxLength="50" />
           <Property Name="Product_Image" Type="text" />
-          <Property Name="Product_Size" Type="varchar" MaxLength="10" />
+          <Property Name="Product_Size" Type="varchar(max)" />
           <Property Name="Product_Color" Type="varchar(max)" />
           <Property Name="Product_Price" Type="float" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Product_Description" Type="text" />
           <Property Name="Subcategory_id" Type="int" />
+          <Property Name="Water_needed" Type="text" />
         </EntityType>
         <EntityType Name="Sub_Categories">
           <Key>
@@ -143,8 +144,8 @@
           </Key>
           <Property Name="SubCategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category_id" Type="int" />
-          <Property Name="SubCategory_image" Type="varchar(max)" />
-          <Property Name="SubCategory_Name" Type="varchar(max)" />
+          <Property Name="SubCategoryName" Type="varchar(max)" />
+          <Property Name="SubCategoryImage" Type="varchar(max)" />
           <Property Name="SubCategory_Description" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -594,7 +595,7 @@
           <Property Name="Product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Product_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Product_Size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Size" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Product_Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Product_Price" Type="Double" />
           <Property Name="Quantity" Type="Int32" />
@@ -604,6 +605,7 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Produc__208CD6FA" FromRole="Products" ToRole="Comments" />
           <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Produ__40058253" FromRole="Products" ToRole="Order_Details" />
           <NavigationProperty Name="Sub_Categories" Relationship="Self.FK__Products__Subcat__1CBC4616" FromRole="Products" ToRole="Sub_Categories" />
+          <Property Name="Water_needed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sub_Categories">
           <Key>
@@ -611,11 +613,11 @@
           </Key>
           <Property Name="SubCategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category_id" Type="Int32" />
-          <Property Name="SubCategory_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SubCategory_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubCategory_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Sub_Categ__Categ__18EBB532" FromRole="Sub_Categories" ToRole="Categories" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Products__Subcat__1CBC4616" FromRole="Sub_Categories" ToRole="Products" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1021,6 +1023,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="PlantsModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Water_needed" ColumnName="Water_needed" />
                 <ScalarProperty Name="Product_id" ColumnName="Product_id" />
                 <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
                 <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
@@ -1036,10 +1039,10 @@
           <EntitySetMapping Name="Sub_Categories">
             <EntityTypeMapping TypeName="PlantsModel.Sub_Categories">
               <MappingFragment StoreEntitySet="Sub_Categories">
+                <ScalarProperty Name="SubCategoryImage" ColumnName="SubCategoryImage" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
                 <ScalarProperty Name="SubCategory_id" ColumnName="SubCategory_id" />
                 <ScalarProperty Name="Category_id" ColumnName="Category_id" />
-                <ScalarProperty Name="SubCategory_image" ColumnName="SubCategory_image" />
-                <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
                 <ScalarProperty Name="SubCategory_Description" ColumnName="SubCategory_Description" />
               </MappingFragment>
             </EntityTypeMapping>

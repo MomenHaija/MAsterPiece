@@ -22,9 +22,9 @@ namespace Plant_Paradise.Models
     
         public int SubCategory_id { get; set; }
         public Nullable<int> Category_id { get; set; }
-        public string SubCategory_image { get; set; }
-        public string SubCategory_Name { get; set; }
         public string SubCategory_Description { get; set; }
+        public string SubCategoryName { get; set; }
+        public string SubCategoryImage { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

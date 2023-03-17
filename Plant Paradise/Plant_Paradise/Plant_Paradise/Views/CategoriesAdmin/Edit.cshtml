@@ -5,42 +5,38 @@
     Layout = "~/Views/Shared/AdminLAyout.cshtml";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
+<br />
+<br />
+<br />
+@using (Html.BeginForm("Edit", "CategoriesAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
+
+    <div class="edit-product-form">
+        <h2>Edit Category</h2>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Category_id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category_Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category_Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category_Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category_Image, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Category_Name, htmlAttributes: new { @class = "control-label col-md-2" })
 
+        @Html.EditorFor(model => model.Category_Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Category_Name, "", new { @class = "text-danger" })
+
+
+        @Html.LabelFor(model => model.Category_Image, htmlAttributes: new { @class = "control-label col-md-2" })
+        <input class="form-control text-box single-line" id="Category_Image" name="Category_Image" type="file" value="@Model.Category_Image" />
+        @Html.ValidationMessageFor(model => model.Category_Image, "", new { @class = "text-danger" })
+        <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

@@ -13,12 +13,14 @@
 <div class="page-content">
 
     <div class="records table-responsive">
-
+        @using (Html.BeginForm("search", "OrdersAdmin"))
+        {
         <div class="record-header">
             <div>
-                <input type="radio" name="order">
-                <label>Day Order</label>
-                <input type="radio" name="order">
+                <input type="radio" name="order" value="1">
+                <label>Day Orders</label>
+
+                <input type="radio" name="order" value="2">
                 <label>All Orders</label>
             </div>
             <div class="add">
@@ -30,11 +32,11 @@
             </div>
 
             <div class="">
-                <input type="search" placeholder="Search" style="margin:0;height: 33px !important;">
+                <input type="search" placeholder="Search" name="Search" style="margin:0;height: 33px !important;">
                 <input type="submit" width="10px" style="margin:0;" value="search" class="btn btn-info">
             </div>
         </div>
-
+        }
         <div>
             <table width="100%">
 
@@ -52,7 +54,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.AspNetUser.Full_Name)
                         </th>
-                        <th>Action</th>
+                        <th>Products</th>
                     </tr>
                 <thead>
                 <tbody>
@@ -66,15 +68,14 @@
                                 @Html.DisplayFor(modelItem => item.Order_date)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Total_price)
+                                @Html.DisplayFor(modelItem => item.Total_price) JD
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.AspNetUser.Full_Name)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Order_id }, new {@class="btn btn-success"}) 
-                                @Html.ActionLink("Details", "Details", new { id = item.Order_id }, new {@class="btn btn-info"}) 
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Order_id }, new {@class="btn btn-danger"})
+                                
+                               <a class="btn btn-success" href="/ViewProductFromAdmin/Index/@item.Order_id">View Products</a>
                             </td>
                         </tr>
                     }

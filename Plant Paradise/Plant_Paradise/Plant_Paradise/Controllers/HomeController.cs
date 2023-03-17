@@ -25,6 +25,7 @@ namespace Plant_Paradise.Controllers
         {
 
             var TypeCategory=db.Sub_Categories.Where(p=>p.Category_id==id);
+            ViewBag.BageName = TypeCategory.FirstOrDefault().Category.Category_Name;
             return View(TypeCategory.ToList());
         }
         public ActionResult About()
@@ -33,6 +34,7 @@ namespace Plant_Paradise.Controllers
 
             return View();
         }
+       
         
         public ActionResult Contact()
         {

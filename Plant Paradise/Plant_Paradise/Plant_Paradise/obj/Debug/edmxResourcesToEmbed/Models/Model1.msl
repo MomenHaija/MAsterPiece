@@ -122,6 +122,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="PlantsModel.Product">
         <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Water_needed" ColumnName="Water_needed" />
           <ScalarProperty Name="Product_id" ColumnName="Product_id" />
           <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
           <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
@@ -137,10 +138,10 @@
     <EntitySetMapping Name="Sub_Categories">
       <EntityTypeMapping TypeName="PlantsModel.Sub_Categories">
         <MappingFragment StoreEntitySet="Sub_Categories">
+          <ScalarProperty Name="SubCategoryImage" ColumnName="SubCategoryImage" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
           <ScalarProperty Name="SubCategory_id" ColumnName="SubCategory_id" />
           <ScalarProperty Name="Category_id" ColumnName="Category_id" />
-          <ScalarProperty Name="SubCategory_image" ColumnName="SubCategory_image" />
-          <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
           <ScalarProperty Name="SubCategory_Description" ColumnName="SubCategory_Description" />
         </MappingFragment>
       </EntityTypeMapping>

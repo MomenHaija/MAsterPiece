@@ -31,6 +31,7 @@ namespace Plant_Paradise.Models
         public Nullable<int> Quantity { get; set; }
         public string Product_Description { get; set; }
         public Nullable<int> Subcategory_id { get; set; }
+        public string Water_needed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }
