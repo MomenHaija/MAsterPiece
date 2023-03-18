@@ -178,5 +178,16 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Consulations">
+      <EntityTypeMapping TypeName="PlantsModel.Consulation">
+        <MappingFragment StoreEntitySet="Consulation">
+          <ScalarProperty Name="Plant_image" ColumnName="Plant_image" />
+          <ScalarProperty Name="Plant_status" ColumnName="Plant_status" />
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Consulation_Id" ColumnName="Consulation_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

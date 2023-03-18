@@ -90,6 +90,16 @@
     <Property Name="userId" Type="nvarchar" MaxLength="128" />
     <Property Name="Product_id" Type="int" />
   </EntityType>
+  <EntityType Name="Consulation">
+    <Key>
+      <PropertyRef Name="Consulation_Id" />
+    </Key>
+    <Property Name="Consulation_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Order_id" Type="nvarchar" MaxLength="128" />
+    <Property Name="Plant_status" Type="varchar(max)" />
+    <Property Name="Plant_image" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="Feedbacks">
     <Key>
       <PropertyRef Name="Feedback_id" />
@@ -210,6 +220,30 @@
       </Principal>
       <Dependent Role="Comments">
         <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consulati__Order__540C7B00">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="Consulation" Type="Self.Consulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Order_id" />
+      </Principal>
+      <Dependent Role="Consulation">
+        <PropertyRef Name="Order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consulati__User___531856C7">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Consulation" Type="Self.Consulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consulation">
+        <PropertyRef Name="User_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -375,6 +409,7 @@
     <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consulation" EntityType="Self.Consulation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order_Details" EntityType="Self.Order_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
@@ -397,6 +432,14 @@
     <AssociationSet Name="FK__Comments__userId__1F98B2C1" Association="Self.FK__Comments__userId__1F98B2C1">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consulati__Order__540C7B00" Association="Self.FK__Consulati__Order__540C7B00">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Consulation" EntitySet="Consulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consulati__User___531856C7" Association="Self.FK__Consulati__User___531856C7">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Consulation" EntitySet="Consulation" />
     </AssociationSet>
     <AssociationSet Name="FK__Feedback__userId__4BAC3F29" Association="Self.FK__Feedback__userId__4BAC3F29">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

@@ -19,6 +19,7 @@ namespace Plant_Paradise.Models
         {
             this.Order_Details = new HashSet<Order_Details>();
             this.Transactions = new HashSet<Transaction>();
+            this.Consulations = new HashSet<Consulation>();
         }
     
         public string Order_id { get; set; }
@@ -31,5 +32,7 @@ namespace Plant_Paradise.Models
         public virtual ICollection<Order_Details> Order_Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consulation> Consulations { get; set; }
     }
 }

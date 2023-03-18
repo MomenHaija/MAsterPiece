@@ -101,15 +101,20 @@
                                 </h5>
                             </div>
 
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne"class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="billing-address-form">
+                                        @{ 
+                                            string s = (ViewBag.UserId);
+                                            Plant_Paradise.Models.PlantsEntities db = new Plant_Paradise.Models.PlantsEntities();
+                                            var user = db.AspNetUsers.Where(p => p.Id ==s).FirstOrDefault();
+
+                                        }
                                         @using (Html.BeginForm("MakeOrder", "Transactions"))
                                         {
-                                            <p><input type="text" placeholder="Name"></p>
-                                            <p><input type="email" placeholder="Email"></p>
-                                            <p><input type="text" placeholder="Address"></p>
-                                            <p><input type="tel" placeholder="Phone"></p>
+                                            <p><input type="email" placeholder="Email" value="@user.Email"></p>
+                                            <p><input type="text" placeholder="Address" value="@user.User_Address"></p>
+                                            <p><input type="tel" placeholder="Phone" value="@user.Phone_Number"></p>
                                             <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
                                             <p style="width:25%;">
                                                 <input type="submit" class="boxed-btn" value="Place Order">

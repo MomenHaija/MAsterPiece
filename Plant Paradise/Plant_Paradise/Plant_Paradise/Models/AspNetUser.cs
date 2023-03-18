@@ -25,6 +25,7 @@ namespace Plant_Paradise.Models
             this.Orders = new HashSet<Order>();
             this.Transactions = new HashSet<Transaction>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.Consulations = new HashSet<Consulation>();
         }
     
         public string Id { get; set; }
@@ -59,5 +60,7 @@ namespace Plant_Paradise.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consulation> Consulations { get; set; }
     }
 }

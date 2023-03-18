@@ -14,16 +14,13 @@
                     @{
                         Plant_Paradise.Models.PlantsEntities db = new Plant_Paradise.Models.PlantsEntities();
                         var subcat = db.Sub_Categories.ToList();
-
-
-}
-                   
+                    }
                     @using (Html.BeginForm("search", "Products"))
                     {
                     <div class="d-flex justify-content-between container-fluid">
                         <div class="input-group">
                             <select onchange="gitproducts()" id="Subcat" name="Subcat" class="" style="width:30%">
-                                <option class="dropdown-header">All</option>
+                                <option class="dropdown-header">Select Category</option>
                                 @foreach (var item in subcat)
                                 {
                                     <option value="@item.SubCategory_id" class="dropdown-item">@item.SubCategoryName</option>

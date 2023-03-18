@@ -66,6 +66,7 @@
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__userId__3C34F16F" FromRole="AspNetUsers" ToRole="Orders" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__userI__43D61337" FromRole="AspNetUsers" ToRole="Transactions" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+    <NavigationProperty Name="Consulations" Relationship="PlantsModel.FK__Consulati__User___4F47C5E3" FromRole="AspNetUser" ToRole="Consulation" />
   </EntityType>
   <EntityType Name="cart">
     <Key>
@@ -131,6 +132,7 @@
     <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Order__3F115E1A" FromRole="Orders" ToRole="Order_Details" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Order__42E1EEFE" FromRole="Orders" ToRole="Transactions" />
     <Property Name="Total_price" Type="Double" />
+    <NavigationProperty Name="Consulations" Relationship="PlantsModel.FK__Consulati__Order__503BEA1C" FromRole="Order" ToRole="Consulation" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -439,5 +441,50 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="Consulations" EntityType="PlantsModel.Consulation" />
+    <AssociationSet Name="FK__Consulati__User___4F47C5E3" Association="PlantsModel.FK__Consulati__User___4F47C5E3">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Consulation" EntitySet="Consulations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consulati__Order__503BEA1C" Association="PlantsModel.FK__Consulati__Order__503BEA1C">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Consulation" EntitySet="Consulations" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Consulation">
+    <Key>
+      <PropertyRef Name="Consulation_Id" />
+    </Key>
+    <Property Name="Consulation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Order_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="PlantsModel.FK__Consulati__User___4F47C5E3" FromRole="Consulation" ToRole="AspNetUser" />
+    <NavigationProperty Name="Order" Relationship="PlantsModel.FK__Consulati__Order__503BEA1C" FromRole="Consulation" ToRole="Order" />
+    <Property Name="Plant_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Plant_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Consulati__User___4F47C5E3">
+    <End Type="PlantsModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="PlantsModel.Consulation" Role="Consulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Consulation">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consulati__Order__503BEA1C">
+    <End Type="PlantsModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="PlantsModel.Consulation" Role="Consulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Order_id" />
+      </Principal>
+      <Dependent Role="Consulation">
+        <PropertyRef Name="Order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -1,4 +1,5 @@
-﻿using Plant_Paradise.Models;
+﻿using Microsoft.AspNet.Identity;
+using Plant_Paradise.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ namespace Plant_Paradise.Controllers
         public ActionResult Index()
         {
             var plants = from b in db.Categories select b;
+            Session["id"] = User.Identity.GetUserId();
+
             return View(plants.ToList());
+
         }
          public PartialViewResult feedbacks()
         {
@@ -39,7 +43,7 @@ namespace Plant_Paradise.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            ViewBag.userid=User.Identity.GetUserId();
             return View();
         }
     }

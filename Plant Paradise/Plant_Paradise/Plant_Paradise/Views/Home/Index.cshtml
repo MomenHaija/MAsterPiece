@@ -160,43 +160,44 @@
                 </div>
             </div>
         </div>
-        @{ 
+        @{
             Plant_Paradise.Models.PlantsEntities db = new Plant_Paradise.Models.PlantsEntities();
             var products = (from p in db.Products
                             join o in db.Order_Details on p.Product_id equals o.Product_id
-                            group p by new { p.Product_id, p.Product_Name,p.Product_Price} into g
+                            group p by new { p.Product_id, p.Product_Name, p.Product_Price } into g
                             orderby g.Count() descending
                             select new
                             {
                                 Product_id = g.Key.Product_id,
-                      
+
                                 Product_Name = g.Key.Product_Name,
-                                Product_Price= g.Key.Product_Price,
+                                Product_Price = g.Key.Product_Price,
 
                                 Count = g.Count()
                             }).Take(3).ToList();
 
-}
+        }
         <div class="row">
 
-@foreach (var P in db.Products) {
-    foreach (var item in products)
-    {
-        if (P.Product_id == item.Product_id)
-        {
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="/Products/SingleProduct/@item.Product_id"><img src="~/Images/@P.Product_Image" alt="" style="width: 261px;height: 261px;"></a>
+            @foreach (var P in db.Products)
+            {
+                foreach (var item in products)
+                {
+                    if (P.Product_id == item.Product_id)
+                    {
+                        <div class="col-lg-4 col-md-6 text-center">
+                            <div class="single-product-item">
+                                <div class="product-image">
+                                    <a href="/Products/SingleProduct/@item.Product_id"><img src="~/Images/@P.Product_Image" alt="" style="width: 261px;height: 261px;"></a>
+                                </div>
+                                <h3>@item.Product_Name</h3>
+                                <p class="product-price">@item.Product_Price JD</p>
+                                <a href="/Products/Add_ToCart/@item.Product_id" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            </div>
                         </div>
-                        <h3>@item.Product_Name</h3>
-                        <p class="product-price">@item.Product_Price JD</p>
-                        <a href="/Products/Add_ToCart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                    </div>
-                </div>
-        }
-    }
-}
+                    }
+                }
+            }
 
 
         </div>
@@ -226,7 +227,55 @@
     var feeback = plants.Feedbacks.ToList();
 }
 <!-- en
-<!-- en
+<!-- en-->
+<div class="testimonail-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="testimonial-sliders">
+                    @foreach (var item in feeback)
+                    {
+
+                        if (item.IsAccepted == 1)
+                        {
+                            <div class="single-testimonial-slider">
+
+                                <div class="client-avater">
+                                </div>
+                                <div class="client-meta">
+
+                                    <h3>@item.AspNetUser.Full_Name </h3>
+                                    <p class="testimonial-body">
+                                        @item.Feedback_text
+                                    </p>
+                                    <div class="last-icon">
+                                        <i class="fas fa-quote-right"></i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+                    <div class="single-testimonial-slider">
+                        <div class="single-testimonial-slider">
+                            <div class="client-avater">
+                            </div>
+                            <div class="client-meta">
+                                <h3>Feebacks From Users</h3>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <a href="\Feedbacks\Index" class="boxed-btn mt-4">Add Comment</a>
+
+    </div>
+</div>
+
 
 
 <!-- end testimonail-section -->

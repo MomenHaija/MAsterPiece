@@ -21,6 +21,8 @@ namespace Plant_Paradise.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
+            ViewBag.UserId = userId;    
+            Session["USerid"] = User.Identity.GetUserId();
             var user_Cart = db.carts.Where(user => user.userId == userId);
             float TotalPrice = 0;
             foreach (var item in user_Cart)
@@ -36,7 +38,7 @@ namespace Plant_Paradise.Controllers
 
         public ActionResult MakeOrder()
         {
-            Session["USerid"] =User.Identity.GetUserId();
+         
 
             var userId = User.Identity.GetUserId();
             var cartItems = db.carts.Where(c => c.userId == userId).ToList();

@@ -87,15 +87,39 @@
         </ul>
     </li> -->
                                 <li><a href="/Products/Index2">Shop</a></li>
-                                @if (User.Identity.IsAuthenticated == true)
-                                {
-                                    <li><a href="Form.html">Consultation</a></li>
+
+                              
+
+
+
+                                    @if (User.Identity.IsAuthenticated == true)
+                                    {
+                                        Plant_Paradise.Models.PlantsEntities db = new Plant_Paradise.Models.PlantsEntities();
+                                        var orders = db.Orders;
+                                        bool flag = false;
+                                        foreach (var item in orders)
+                                        {
+                                            if (item.userId == (Session["id"]).ToString())
+                                            {
+                                                flag = true;
+                                            }
+
+                                        }
+                                    
+
+
+                                    if (flag)
+                                    {
+                                        <li><a href="Form.html">Consultation</a></li>
+                                    }
                                     <li><a href="/UserProfile/Index">Profile</a></li>
                                 }
-                                    <li><a href="/Home/About">About</a></li>
 
-                                    <li><a href="/Home/Contact">Contact</a></li>
+                                <li><a href="/Home/About">About</a></li>
 
+                                <li><a href="/Home/Contact">Contact</a></li>
+                                @if (User.Identity.IsAuthenticated == true)
+                                {
                                     <li>
                                         <div class="header-icons">
                                             <a class="shopping-cart" href="/Products/ViewCart">
@@ -103,10 +127,11 @@
                                             </a>
                                         </div>
                                     </li>
-                                    <li>
-                                        @Html.Partial("_LoginPartial")
-                                    </li>
-                                </ul>
+                                }
+                                <li>
+                                    @Html.Partial("_LoginPartial")
+                                </li>
+                            </ul>
 
                         </nav>
                         <div class="mobile-menu"></div>

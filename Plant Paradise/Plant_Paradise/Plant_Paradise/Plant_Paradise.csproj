@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminProductsController.cs" />
     <Compile Include="Controllers\CategoriesAdminController.cs" />
+    <Compile Include="Controllers\ConsulationsController.cs" />
     <Compile Include="Controllers\FeedbacksAdminController.cs" />
     <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +210,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Consulation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
@@ -475,8 +479,13 @@
     <Content Include="Content\shopstyle\vendor\slick\slick.js" />
     <Content Include="Content\shopstyle\vendor\slick\slick.min.js" />
     <Content Include="Content\shopstyle\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Images\GardeenPlants.jpg" />
+    <Content Include="Images\GardeenPlants5.jpg" />
+    <Content Include="Images\GardeenPlants55.jpg" />
+    <Content Include="Images\GardeenPlants5555.jpg" />
     <Content Include="Images\Gardeenplantsr.jpg" />
     <Content Include="Images\Gardeenplantsr55.jpg" />
+    <Content Include="Images\imageindoor.jpg" />
     <Content Include="Images\indoorPlants510.jpg" />
     <Content Include="Images\cactus2-free-img.jpg" />
     <Content Include="Images\CherryTrees.jpg" />
@@ -909,6 +918,11 @@
     <Content Include="Views\Products\Index2.cshtml" />
     <Content Include="Views\Products\ViewCart.cshtml" />
     <Content Include="Views\Shared\BestSaller.cshtml" />
+    <Content Include="Views\Consulations\Create.cshtml" />
+    <Content Include="Views\Consulations\Delete.cshtml" />
+    <Content Include="Views\Consulations\Details.cshtml" />
+    <Content Include="Views\Consulations\Edit.cshtml" />
+    <Content Include="Views\Consulations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

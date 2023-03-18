@@ -40,5 +40,6 @@ namespace Plant_Paradise.Models
         public virtual DbSet<Sub_Categories> Sub_Categories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Consulation> Consulations { get; set; }
     }
 }
