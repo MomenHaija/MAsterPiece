@@ -63,6 +63,7 @@
     <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
     <Property Name="User_Address" Type="varchar(max)" />
     <Property Name="Full_Name" Type="varchar(max)" />
+    <Property Name="User_Image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="cart">
     <Key>

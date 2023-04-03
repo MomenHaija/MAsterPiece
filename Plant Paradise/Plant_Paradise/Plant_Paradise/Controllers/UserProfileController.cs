@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -21,14 +22,24 @@ namespace Plant_Paradise.Controllers
             var User_id = User.Identity.GetUserId();
             return View(db.AspNetUsers.Where(p=>p.Id== User_id).ToList());
         }
-        public ActionResult EditProfile(string name,string email,string address,string phone)
+        public ActionResult EditProfile([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Phone_Number,User_Address,Full_Name,User_Image")] AspNetUser aspNetUser ,string name,string email,string address,string phone, HttpPostedFileBase user_image)
         {
+
+            string fileName = Path.GetFileName(user_image.FileName);
+            string path = "../Images/" + fileName;
+            string path2 = Path.GetFileName(user_image.FileName);
+            string fullPath = Server.MapPath(path);
+            user_image.SaveAs(fullPath);
+
+
             var User_id = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(p => p.Id == User_id).FirstOrDefault();
+            user.User_Image=path2.ToString();   
             user.Full_Name =name;
             user.Email = email;
             user.Phone_Number = phone;
             user.User_Address = address;
+            
             db.SaveChanges();
             return RedirectToAction("Index", "UserProfile");
         }

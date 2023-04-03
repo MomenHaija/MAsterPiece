@@ -479,6 +479,7 @@
     <Content Include="Content\shopstyle\vendor\slick\slick.js" />
     <Content Include="Content\shopstyle\vendor\slick\slick.min.js" />
     <Content Include="Content\shopstyle\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Images\Amer.jpg" />
     <Content Include="Images\GardeenPlants.jpg" />
     <Content Include="Images\GardeenPlants5.jpg" />
     <Content Include="Images\GardeenPlants55.jpg" />
@@ -859,7 +860,6 @@
     <Content Include="Views\Shared\UserLayout1.cshtml" />
     <Content Include="Views\Shared\UserLayout12.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\SingleProduct.cshtml" />
     <Content Include="Views\Products\test.cshtml" />
     <Content Include="Views\Products\ViewAdd_ToCart.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
@@ -923,6 +923,7 @@
     <Content Include="Views\Consulations\Details.cshtml" />
     <Content Include="Views\Consulations\Edit.cshtml" />
     <Content Include="Views\Consulations\Index.cshtml" />
+    <Content Include="Views\Products\SingleProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

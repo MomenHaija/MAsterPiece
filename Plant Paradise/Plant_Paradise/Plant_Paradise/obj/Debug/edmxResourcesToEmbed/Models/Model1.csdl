@@ -67,6 +67,7 @@
     <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__userI__43D61337" FromRole="AspNetUsers" ToRole="Transactions" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
     <NavigationProperty Name="Consulations" Relationship="PlantsModel.FK__Consulati__User___4F47C5E3" FromRole="AspNetUser" ToRole="Consulation" />
+    <Property Name="User_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="cart">
     <Key>

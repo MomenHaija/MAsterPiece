@@ -1,9 +1,19 @@
-﻿@model IEnumerable<Plant_Paradise.Models.Product>
+﻿@model Plant_Paradise.Models.Product
 
 @{
     ViewBag.Title = "SingleProduct";
     Layout = "~/Views/Shared/UserLayout12.cshtml";
 }
+
+@{
+    ViewBag.Title = "SingleProduct";
+    Layout = "~/Views/Shared/UserLayout12.cshtml";
+}
+<style>
+    .card{
+        border:none !important;
+    }
+</style>
 @using (Html.BeginForm("Add_ToCart", "Products"))
 {
     <div class="single-product mt-150 mb-150">
@@ -11,54 +21,120 @@
             <div class="row">
 
 
-                @foreach (var item in Model)
-                {
                 <div class="col-md-5">
                     <div class="single-product-img">
-                        <img src="~/Images/@item.Product_Image" alt="">
+                        <img src="~/Images/@Model.Product_Image" alt="">
                     </div>
                 </div>
-                
+
                 <div class="col-md-7">
                     <div class="single-product-content">
                         <h3>Boncellensis Secullant</h3>
-                        <p class="single-product-pricing"><span> </span>@item.Product_Price JD</p>
+                        <h2><span>Price: <span style="color:orange">@Model.Product_Price JD</span></h2>
                         <p>Boncellensis Secullant is a stunning and unique succulent plant with cylindrical stems that grow upright, resembling little columns. It features small, green leaves that grow in a spiral pattern around the stems, and produces delicate pink flowers in the spring. This plant is low-maintenance and perfect for indoor or outdoor settings, making it a great choice for anyone looking to add a touch of natural beauty to their home or garden.</p>
-                        @if (item.Sub_Categories.Category_id == 1 || item.Sub_Categories.Category_id == 2) { 
-                        
-                                <h3>Water needed</h3>
-                                <p>@item.Water_needed</p>
-                                
-                        
+                        @if (Model.Sub_Categories.Category_id == 1 || Model.Sub_Categories.Category_id == 2)
+                        {
+
+                            <h3>Watering</h3>
+                            <p>@Model.Water_needed</p>
+
                         }
-                        <h4>Size:@item.Product_Size</h4>
+                        <h4>Size:@Model.Product_Size</h4>
                         <div class="single-product-form">
-                            <p><strong>Categories:</strong>@item.Sub_Categories.SubCategoryName</p>
+                            <p><strong>Categories:</strong>@Model.Sub_Categories.SubCategoryName</p>
 
                             <form method="post" Asp-action="Add_ToCart">
-                                <input type="hidden" name="id" value="@item.Product_id" />
+                                <input type="hidden" name="id" value="@Model.Product_id" />
                                 <div>
                                     <label for="quantity">Quantity:</label>
                                     <input type="number" id="quantity" name="quantity" value="1" min="1" required />
                                 </div>
                                 <div>
                                     <input class="cart-btn " type="submit" value="Add to Cart">
-                                        
-                                    
+
+
                                 </div>
 
                             </form>
                         </div>
-                      
+
                     </div>
 
                 </div>
-                }
                 
+
             </div>
         </div>
     </div>
 }
-   <!-- end single product -->
-    <!-- more products -->
-    
+<!-- end single product -->
+<!-- more products -->
+@{
+    Plant_Paradise.Models.PlantsEntities db = new Plant_Paradise.Models.PlantsEntities();
+    var comm = db.Comments.Where(p => p.Product_id == Model.Product_id).ToList();
+}
+
+<div class=" mt-150 mb-150">
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 blog-content">
+                    <div class="pt-5">
+                      
+
+                            <div class="row d-flex ">
+                                <div class="col-md-10">
+                                    <div class="card">
+                                        <div class="card-body m-3">
+                                            @foreach (var item in comm)
+                                            {
+
+                                                <div class="row">
+                                                    <div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20%2810%29.webp"
+                                                             class="rounded-circle img-fluid shadow-1" alt="woman avatar" width="50" height="50" />
+                                                    </div>
+                                                    <div class="col-lg-8">
+
+                                                        <small class="fw-bold lead mb-2"><strong>@item.AspNetUser.Full_Name</strong></small>
+                                                        <p>
+                                                            @item.Comment_text
+
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                                <hr />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                            <!-- END comment-list -->
+                            <br /><br /><br />
+                            <div class="comment-form-wrap ">
+                                @using (Html.BeginForm("addcomment", "Products"))
+                                {
+
+                                    <input type="hidden" name="product_id" value="@Model.Product_id" />
+
+                                    <div class="form-group">
+                                        <textarea name="Comment_text" id="message" cols="13" rows="3" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Post comment" class="btn btn-primary btn-md text-white">
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

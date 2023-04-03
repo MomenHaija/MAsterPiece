@@ -27,6 +27,8 @@ namespace Plant_Paradise.Controllers
         {
             var products = db.Products.Include(p => p.Sub_Categories).Where(p => p.Subcategory_id == id).OrderByDescending(p => p.Product_id);
             ViewBag.PageName = products.FirstOrDefault().Sub_Categories.SubCategoryName;
+
+
             return View(products.ToList());
         }
         public ActionResult test()
@@ -48,8 +50,9 @@ namespace Plant_Paradise.Controllers
         public ActionResult SingleProduct(int id)
         {
             Session["Subcat"] = id;
-            var products = db.Products.Include(p => p.Sub_Categories).Where(p => p.Product_id == id);
-            return View(products.ToList());
+            var product = db.Products.Include(p => p.Sub_Categories).Where(p => p.Product_id == id);
+            return View(product.FirstOrDefault());
+
         }
 
         public ActionResult search(String Search)
@@ -73,11 +76,7 @@ namespace Plant_Paradise.Controllers
         public ActionResult Add_ToCart(int id,int quantity=1)
         {
             cart Cart = new cart();
-       
-
-
-
-
+     
 
                 Cart.Product_id = id;
                 Cart.Quantity = quantity;
@@ -86,11 +85,26 @@ namespace Plant_Paradise.Controllers
                 db.SaveChanges();
                 var userId = User.Identity.GetUserId();
                 Session["NumberofItem"] = db.carts.Where(user => user.userId == userId).Count();
-                return RedirectToAction("ViewCart", "Products");
+                return RedirectToAction("SingleProduct", "Products",new { id=id });
           
           
         }
-      
+
+        public ActionResult addcomment(int product_id,string Comment_text) {
+
+            Comment comm = new Comment();
+            comm.Product_id = product_id;
+            comm.Comment_text= Comment_text;
+            comm.userId= User.Identity.GetUserId();
+            db.Comments.Add(comm);
+            db.SaveChanges();
+
+            return RedirectToAction("SingleProduct", "Products", new { id = product_id });
+        }
+
+
+
+
         public ActionResult Remove_FromCard(int id)
         {
             

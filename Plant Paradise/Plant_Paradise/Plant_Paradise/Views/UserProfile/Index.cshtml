@@ -68,10 +68,19 @@
                                     <div class="card-title mb-0">My info</div>
                                 </div>
                                 <div class="card-body">
-                                    @using (Html.BeginForm("EditProfile", "UserProfile"))
+                                    @using (Html.BeginForm("EditProfile", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
                                         foreach (var item in Model)
                                         {
+                                            <div class="single-testimonial-slider " style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+                                                <div class="client-avater">
+                                                    <img src="~/Images/Amer.jpg" alt="">
+                                                </div>
+                                                <div class="client-meta">
+                                                    <h3>@item.Full_Name</h3>
+                                                </div>
+                                            </div>
+
                                             <div class="form-row">
                                                 <label for="inputName">Name</label>
                                                 <input type="text" class="form-control" id="inputName"
@@ -80,7 +89,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail4">Email</label>
-                                                <input type="email" class="form-control" readonly id="inputEmail4" value="@item.Email" name="email" >
+                                                <input type="email" class="form-control" readonly id="inputEmail4" value="@item.Email" name="email">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputAddress">Address</label>
@@ -92,8 +101,16 @@
                                                 <input type="tel" class="form-control" id="inputAddress"
                                                        value="@item.Phone_Number" name="phone">
                                             </div>
-
                                         }
+
+                                            <div class="form-group">
+                                                <label for="inputAddress">Image</label>
+                                                <input type="file" class="form-control" id="user_image"
+                                                       name="user_image">
+                                            </div>
+
+
+                                        
                                         <input style=" font-family: 'Poppins' , sans-serif !important; display: inline-block !important; padding: 10px 20px !important;" class="boxed-btn" type="submit" value="Save Change" />
 
                                     }

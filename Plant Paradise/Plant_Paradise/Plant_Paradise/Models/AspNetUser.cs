@@ -43,6 +43,7 @@ namespace Plant_Paradise.Models
         public string Phone_Number { get; set; }
         public string User_Address { get; set; }
         public string Full_Name { get; set; }
+        public string User_Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

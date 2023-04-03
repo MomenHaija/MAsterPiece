@@ -68,6 +68,7 @@
           <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
           <Property Name="User_Address" Type="varchar(max)" />
           <Property Name="Full_Name" Type="varchar(max)" />
+          <Property Name="User_Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="cart">
           <Key>
@@ -566,6 +567,7 @@
           <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__userI__43D61337" FromRole="AspNetUsers" ToRole="Transactions" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="Consulations" Relationship="PlantsModel.FK__Consulati__User___4F47C5E3" FromRole="AspNetUser" ToRole="Consulation" />
+          <Property Name="User_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="cart">
           <Key>
@@ -1032,6 +1034,7 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="PlantsModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="User_Image" ColumnName="User_Image" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
